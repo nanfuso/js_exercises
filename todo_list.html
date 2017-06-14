@@ -10,7 +10,7 @@
       .hidden{
         display: none;
       }
-      
+
   </style>
 </head>
 <body>
@@ -19,17 +19,36 @@
   <p onmousedown="completedTask(this)">Get laundry</p>
 
   <button onclick="hideCompleted()">Hide Completed Tasks</button>
+  <button onclick="showAllTasks()">Show All Tasks</button>
+
+  <h4>Number of Tasks Completed: <span id="num-complete">0</span></h4>
+
 
 <script>
     function completedTask(ptag) {
         ptag.classList.toggle("complete");
+        var completedTasks = document.querySelectorAll(".complete");
+        var countTag = document.querySelector("#num-complete");
+        countTag.innerHTML = completedTasks.length;
     }
 
-    function hideCompleted(ptag) {
-        var ptag = document.querySelector("p")
-        if ("complete")
-            ptag.("hidden");
+    function hideCompleted() {
+        var completedTasks = document.querySelectorAll(".complete");
+            for (var i = 0; i < completedTasks.length; i++) {
+                var completedTask = completedTasks[i];
+                completedTask.classList.add("hidden");
+            }
     }
+
+    function showAllTasks() {
+        var completedTasks = document.querySelectorAll(".complete");
+            for (var i = 0; i < completedTasks.length; i++) {
+                var completedTask = completedTasks[i];
+                completedTask.classList.remove("hidden");
+            }
+    }
+
+
 
 </script>
 
